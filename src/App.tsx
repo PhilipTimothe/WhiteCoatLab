@@ -1,17 +1,44 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
+// import { motion } from "framer-motion";
 import VideoBackground from "./components/VideoBackground";
 import FullscreenMenu from "./components/FullscreenMenu";
 import SplitTextReveal from "./components/SplitTextReveal";
+import FeaturedWorks from "./components/FeaturedWorks";
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [logoVisible, setLogoVisible] = useState(false);
   const [subtitleVisible, setSubtitleVisible] = useState(false);
+  const [backgroundTransition, setBackgroundTransition] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setScrollY(currentScrollY);
+
+      // Calculate transition based on scroll position - Start much earlier
+      const heroHeight = window.innerHeight;
+      const narrativeHeight = window.innerHeight * 0.4; // Reduced from full height
+      const transitionStart = heroHeight + narrativeHeight * 0.1; // Start transition at 10% through narrative (much earlier)
+      const transitionEnd = heroHeight + narrativeHeight * 0.6; // Complete by 60% through narrative
+
+      if (
+        currentScrollY >= transitionStart &&
+        currentScrollY <= transitionEnd
+      ) {
+        const progress =
+          (currentScrollY - transitionStart) /
+          (transitionEnd - transitionStart);
+        setBackgroundTransition(Math.min(progress, 1));
+      } else if (currentScrollY > transitionEnd) {
+        setBackgroundTransition(1);
+      } else {
+        setBackgroundTransition(0);
+      }
+    };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -30,6 +57,17 @@ function App() {
       clearTimeout(subtitleTimer);
     };
   }, []);
+
+  // Calculate dynamic colors based on transition progress
+  const narrativeBackgroundColor = `rgb(${backgroundTransition * 255}, ${
+    backgroundTransition * 255
+  }, ${backgroundTransition * 255})`;
+  const lineColor = backgroundTransition > 0.5 ? "#cccccc" : "#666666";
+  const narrativeTextColor = backgroundTransition > 0.5 ? "#000000" : "#ffffff";
+  const featuredBackgroundColor = `rgb(${backgroundTransition * 255}, ${
+    backgroundTransition * 255
+  }, ${backgroundTransition * 255})`;
+  const featuredTextColor = backgroundTransition > 0.5 ? "#000000" : "#ffffff";
 
   return (
     <div className="bg-black/90 text-white relative">
@@ -51,13 +89,13 @@ function App() {
                   href="#directors"
                   className="text-xs xl:text-sm font-medium tracking-wider hover:text-orange-400 transition-colors"
                 >
-                  DIRECTORS
+                  WHITECOATLAB
                 </a>
                 <a
                   href="#photographers"
                   className="text-xs xl:text-sm font-medium tracking-wider hover:text-orange-400 transition-colors"
                 >
-                  PHOTOGRAPHERS
+                  WHO WE ARE
                 </a>
               </div>
 
@@ -68,13 +106,13 @@ function App() {
                     href="#commercials"
                     className="text-xs xl:text-sm font-medium tracking-wider hover:text-orange-400 transition-colors flex items-center"
                   >
-                    COMMERCIALS<sup className="text-xs ml-1">01</sup>
+                    WORKS<sup className="text-xs ml-1">01</sup>
                   </a>
                   <a
                     href="#narrative"
                     className="text-xs xl:text-sm font-medium tracking-wider hover:text-orange-400 transition-colors flex items-center"
                   >
-                    NARRATIVE<sup className="text-xs ml-1">02</sup>
+                    BRIEFS<sup className="text-xs ml-1">02</sup>
                   </a>
                 </div>
               </div>
@@ -144,7 +182,7 @@ function App() {
                   : "opacity-0 translate-y-8"
               }`}
               style={{
-                transform: `translateY(${logoVisible ? scrollY * 0.4 : 32}px)`,
+                transform: `translateY(${logoVisible ? scrollY * 0.2 : 32}px)`,
               }}
             >
               <h1
@@ -196,9 +234,15 @@ function App() {
         </div>
       </div>
 
-      {/* Narrative Section */}
-      <section className="relative min-h-screen bg-black-900 overflow-hidden">
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex items-start pt-24 sm:pt-32 lg:pt-40">
+      {/* Narrative Section with Dynamic Background - Reduced Height */}
+      <section
+        className="relative overflow-hidden transition-colors duration-700 ease-out"
+        style={{
+          backgroundColor: narrativeBackgroundColor,
+          height: "35vh", // Increased from 30vh to 50vh for better text positioning
+        }}
+      >
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center pt-16 sm:pt-20 md:pt-24">
           <div className="w-full">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-2 lg:gap-8">
               <div className="lg:col-start-2 lg:col-span-10">
@@ -209,23 +253,35 @@ function App() {
                   <div className="space-y-2">
                     <SplitTextReveal
                       text="We craft stories that move people — remarkable,"
-                      className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-white leading-tight"
+                      className="text-sm sm:text-1xl md:text-3xl lg:text-4xl xl:text-5xl leading-tight transition-colors duration-700 ease-out"
                       delay={0}
+                      textColor={narrativeTextColor}
                     />
                     <SplitTextReveal
                       text="and emotionally unforgettable narratives that"
-                      className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-white leading-tight"
+                      className="text-sm sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-tight transition-colors duration-700 ease-out"
                       delay={0.1}
+                      textColor={narrativeTextColor}
                     />
                     <SplitTextReveal
                       text="live far beyond the frame."
-                      className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-white leading-tight"
+                      className="text-sm sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-tight transition-colors duration-700 ease-out"
                       delay={0.2}
+                      textColor={narrativeTextColor}
                     />
                   </div>
                   <div className="flex items-center space-x-4">
-                    <div className="w-12 h-px bg-white"></div>
-                    <span className="text-xs text-gray-400 tracking-widest font-medium">
+                    <div
+                      className="w-6 sm:w-10 h-px transition-colors duration-700 ease-out"
+                      style={{ backgroundColor: lineColor }}
+                    ></div>
+                    <span
+                      className="text-[9px] sm:text-xs tracking-widest font-medium transition-colors duration-700 ease-out"
+                      style={{
+                        color:
+                          backgroundTransition > 0.1 ? "#666666" : "#9CA3AF",
+                      }}
+                    >
                       STORYTELLING
                     </span>
                   </div>
@@ -235,6 +291,13 @@ function App() {
           </div>
         </div>
       </section>
+
+      {/* Featured Works Section with Dynamic Background */}
+      <FeaturedWorks
+        backgroundColor={featuredBackgroundColor}
+        textColor={featuredTextColor}
+        transitionProgress={backgroundTransition}
+      />
     </div>
   );
 }

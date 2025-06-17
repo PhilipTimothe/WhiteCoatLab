@@ -96,15 +96,6 @@ const FullscreenMenu = () => {
                 </motion.a>
               ))}
             </motion.nav>
-
-            {/* Close button for mobile - positioned in top right */}
-            <button
-              onClick={() => setIsOpen(false)}
-              className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white hover:text-orange-400 transition-colors duration-300 p-2"
-              aria-label="Close fullscreen menu"
-            >
-              <Plus className="h-5 w-5 sm:h-6 sm:w-6 rotate-45" />
-            </button>
           </motion.div>
         )}
       </AnimatePresence>
