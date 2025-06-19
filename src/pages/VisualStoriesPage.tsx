@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
-import PortraitsGrid from "../components/PortraitsGrid";
+import VisualStoriesGrid from "../components/VisualStoriesGrid";
 import FullscreenMenu from "../components/FullscreenMenu";
 
-const PortraitsPage = () => {
+const VisualStoriesPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
 
@@ -15,28 +15,55 @@ const PortraitsPage = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // All portrait image IDs - including new additions
-  const portraitImages = [
-    "25350851-f816-46bb-6ca6-ffc944e6e900",
-    "0389282d-91a1-4800-3ec9-0d3e3af3b900",
-    "d596c3a4-20ad-4800-be5b-85ff35602100",
-    "20b0cd55-d3ec-48bd-5531-e07aa85a0500",
-    "42fb1b30-5a7a-4085-1e6f-17bf177fc600",
-    "ee526d1b-6a3d-4805-48b0-919857058100",
-    "a5a77610-08d3-480c-1fe2-6ea83cfefd00",
-    "1d4c059b-724e-4ade-2184-cc2b6e8acc00",
-    "b2b3181d-a53d-42b7-de4f-02ab0c10b300",
-    "b2c249c0-86cf-4680-a7a3-b08766816700",
-    "ddb269cc-01c8-4f47-4b36-c6206be84f00",
-    "c3a1d8fe-9628-47a0-57b9-4542b8b38500",
-    "2415b0cc-41da-49e8-f52a-41be5774ab00",
-    "f0aee628-d621-4f0d-41e2-2db3735e9000",
-    "a67f71eb-38b1-487d-ebc7-886f208d6600",
-    "e1da7443-a964-4f4b-985b-cbed1153f700",
-    "5eafc16b-12b2-43ea-7333-a622064c3600",
-  ].map(
-    (id) => `https://imagedelivery.net/ly47schtw9lMeXBIbG9ODw/${id}/public`
-  );
+  // Visual stories videos
+  const visualStories = [
+    {
+      title: "Cutler & Gross",
+      videoSrc:
+        "https://customer-03tgn6o4u930capn.cloudflarestream.com/5a83fbfc9e04432578776d9cacf19d5b/manifest/video.m3u8",
+      posterSrc:
+        "https://images.pexels.com/photos/3945313/pexels-photo-3945313.jpeg?auto=compress&cs=tinysrgb&w=800",
+    },
+    {
+      title: "Glowbar",
+      videoSrc:
+        "https://customer-03tgn6o4u930capn.cloudflarestream.com/1ac895b4a801d10e83a7ee3284d0b50f/manifest/video.m3u8",
+      posterSrc:
+        "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800",
+    },
+    {
+      title: "Grand Street Pizza",
+      videoSrc:
+        "https://customer-03tgn6o4u930capn.cloudflarestream.com/87ea424656f85c90562a8e91f720d777/manifest/video.m3u8",
+      posterSrc:
+        "https://images.pexels.com/photos/1566837/pexels-photo-1566837.jpeg?auto=compress&cs=tinysrgb&w=800",
+      thumbnailStartTime: 0.2, // 6 frames at 30fps = 6/30 = 0.2 seconds
+      hoverStartTime: 0.2, // Start hover video at 6 frames in
+    },
+    {
+      title: "Givenchy Project",
+      videoSrc:
+        "https://customer-03tgn6o4u930capn.cloudflarestream.com/e3adda6538f131965040dff41c78763d/manifest/video.m3u8",
+      posterSrc:
+        "https://images.pexels.com/photos/934070/pexels-photo-934070.jpeg?auto=compress&cs=tinysrgb&w=800",
+      thumbnailStartTime: 0.167, // 5 frames at 30fps = 5/30 = 0.167 seconds
+      hoverStartTime: 0.167, // Start hover video at 5 frames in
+    },
+    {
+      title: "Darby Construction",
+      videoSrc:
+        "https://customer-03tgn6o4u930capn.cloudflarestream.com/6422435b78aca34ac7cf027fcb39f1fd/manifest/video.m3u8",
+      posterSrc:
+        "https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800",
+    },
+    {
+      title: "In The Lab",
+      videoSrc:
+        "https://customer-03tgn6o4u930capn.cloudflarestream.com/6afbf1a3ab525a17b50c36e5a068169b/manifest/video.m3u8",
+      posterSrc:
+        "https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg?auto=compress&cs=tinysrgb&w=800",
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -135,7 +162,7 @@ const PortraitsPage = () => {
 
       {/* Main Content */}
       <main>
-        {/* Hero Section - Increased top padding */}
+        {/* Hero Section - Matching Portraits page structure */}
         <section className="pt-12 pb-4 sm:pt-16 sm:pb-6 md:pt-20 md:pb-8">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
@@ -144,10 +171,10 @@ const PortraitsPage = () => {
               transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
               className="text-center"
             >
-              <div className="flex items-center justify-center space-x-4">
+              <div className="flex items-center justify-center space-x-4 mt-8">
                 <div className="w-10 h-px bg-gray-600"></div>
                 <span className="text-xs tracking-widest font-medium text-gray-400">
-                  PORTRAIT PHOTOGRAPHY
+                  VISUAL STORIES
                 </span>
                 <div className="w-10 h-px bg-gray-600"></div>
               </div>
@@ -155,10 +182,10 @@ const PortraitsPage = () => {
           </div>
         </section>
 
-        {/* Portraits Grid - Minimal top padding */}
+        {/* Visual Stories Grid - Minimal top padding */}
         <section className="pt-2 pb-20 sm:pt-3 sm:pb-24 md:pt-4 md:pb-32">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <PortraitsGrid images={portraitImages} />
+            <VisualStoriesGrid videos={visualStories} />
           </div>
         </section>
       </main>
@@ -178,4 +205,4 @@ const PortraitsPage = () => {
   );
 };
 
-export default PortraitsPage;
+export default VisualStoriesPage;

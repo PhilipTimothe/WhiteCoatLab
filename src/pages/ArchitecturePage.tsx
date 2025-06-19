@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
-import PortraitsGrid from "../components/PortraitsGrid";
+import ArchitectureGrid from "../components/ArchitectureGrid";
 import FullscreenMenu from "../components/FullscreenMenu";
 
-const PortraitsPage = () => {
+const ArchitecturePage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
 
@@ -15,25 +15,35 @@ const PortraitsPage = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // All portrait image IDs - including new additions
-  const portraitImages = [
-    "25350851-f816-46bb-6ca6-ffc944e6e900",
-    "0389282d-91a1-4800-3ec9-0d3e3af3b900",
-    "d596c3a4-20ad-4800-be5b-85ff35602100",
-    "20b0cd55-d3ec-48bd-5531-e07aa85a0500",
-    "42fb1b30-5a7a-4085-1e6f-17bf177fc600",
-    "ee526d1b-6a3d-4805-48b0-919857058100",
-    "a5a77610-08d3-480c-1fe2-6ea83cfefd00",
-    "1d4c059b-724e-4ade-2184-cc2b6e8acc00",
-    "b2b3181d-a53d-42b7-de4f-02ab0c10b300",
-    "b2c249c0-86cf-4680-a7a3-b08766816700",
-    "ddb269cc-01c8-4f47-4b36-c6206be84f00",
-    "c3a1d8fe-9628-47a0-57b9-4542b8b38500",
-    "2415b0cc-41da-49e8-f52a-41be5774ab00",
-    "f0aee628-d621-4f0d-41e2-2db3735e9000",
-    "a67f71eb-38b1-487d-ebc7-886f208d6600",
-    "e1da7443-a964-4f4b-985b-cbed1153f700",
-    "5eafc16b-12b2-43ea-7333-a622064c3600",
+  // All architecture image IDs - Randomized order
+  const architectureImages = [
+    "e38fe85f-72b2-45a1-51f3-e80fa057e100",
+    "815adbc6-cbaa-4912-0df0-89e2cf392300",
+    "9079d3da-9fc6-4a68-f1b8-5e908c7cc100",
+    "2b4b2db0-e14c-4a77-b016-e1fa08074300",
+    "fd1d5951-54fc-4795-20b6-6fb4d3c8be00",
+    "3c463b74-0b4e-4a69-06d5-eafd856e5c00",
+    "426ff317-2b68-4104-71f7-b5c9007f5000",
+    "ee9b0dc8-bb5d-4cc7-1745-13aae4d39b00",
+    "16fe6850-dea0-4696-f9b2-85851e2dc600",
+    "abaffbb6-1847-476b-63de-99523038b700",
+    "900480af-0454-4e10-e5d3-9e5ff5a2b700",
+    "7cda5900-1137-4d18-b658-a956e373d200",
+    "3f6a665a-ea38-4489-4610-32d86d8e0300",
+    "90fc5b5a-4e4b-446d-443d-759b134d3b00",
+    "f861a9d8-bb73-4521-34a7-c81e58292000",
+    "056a8be7-ccbb-4e12-c619-0ad3383e3700",
+    "e0255140-26de-422c-bbae-4095e94d4000",
+    "2dec6203-b8c0-449a-0d9c-ba11ba90aa00",
+    "a5a6c0b6-96fd-418c-00b8-561b466c4900",
+    "9d4d312b-8032-41a3-7f43-df42bb417400",
+    "4331e98d-7fb0-40be-ba05-3ec52d56b100",
+    "6fd3ab07-6666-46a8-eb9e-73039eb78100",
+    "10f5a074-349d-4784-0627-df8face83d00",
+    "9609629b-53d3-4f04-d03b-da34938b9000",
+    "15502193-e923-4f11-f5c2-63714959ff00",
+    "0d39b8e3-01ee-4843-94e7-32ca7da5ac00",
+    "54c726f4-f910-4180-948e-0a8d1d3a1400",
   ].map(
     (id) => `https://imagedelivery.net/ly47schtw9lMeXBIbG9ODw/${id}/public`
   );
@@ -147,7 +157,7 @@ const PortraitsPage = () => {
               <div className="flex items-center justify-center space-x-4">
                 <div className="w-10 h-px bg-gray-600"></div>
                 <span className="text-xs tracking-widest font-medium text-gray-400">
-                  PORTRAIT PHOTOGRAPHY
+                  ARCHITECTURE PHOTOGRAPHY
                 </span>
                 <div className="w-10 h-px bg-gray-600"></div>
               </div>
@@ -155,10 +165,10 @@ const PortraitsPage = () => {
           </div>
         </section>
 
-        {/* Portraits Grid - Minimal top padding */}
+        {/* Architecture Grid - Minimal top padding */}
         <section className="pt-2 pb-20 sm:pt-3 sm:pb-24 md:pt-4 md:pb-32">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <PortraitsGrid images={portraitImages} />
+            <ArchitectureGrid images={architectureImages} />
           </div>
         </section>
       </main>
@@ -178,4 +188,4 @@ const PortraitsPage = () => {
   );
 };
 
-export default PortraitsPage;
+export default ArchitecturePage;

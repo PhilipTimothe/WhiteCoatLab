@@ -10,13 +10,13 @@ const menuCategories = [
       { name: "PORTRAITS", href: "/portraits", isLink: true },
       { name: "BLACK & WHITE", href: "#black-and-white", isLink: false },
       { name: "LIFE IN COLOR", href: "#life-in-color", isLink: false },
-      { name: "ARCHITECTURE", href: "#architecture", isLink: false },
+      { name: "ARCHITECTURE", href: "/architecture", isLink: true },
     ],
   },
   {
     title: "Film",
     items: [
-      { name: "VISUAL STORIES", href: "#visual-stories", isLink: false },
+      { name: "VISUAL STORIES", href: "/visual-stories", isLink: true },
       { name: "DOCUMENTARY", href: "#documentary", isLink: false },
     ],
   },
@@ -38,7 +38,7 @@ const FullscreenMenu = () => {
       {/* Toggle Button - responsive sizing */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="text-white hover:text-orange-400 transition-colors duration-300 z-[110] relative p-1"
+        className="text-white hover:text-blue-400/80 transition-colors duration-300 z-[110] relative p-1"
         aria-label="Toggle fullscreen menu"
       >
         <Plus
@@ -134,7 +134,7 @@ const FullscreenMenu = () => {
                             <Link
                               to={item.href}
                               onClick={() => setIsOpen(false)}
-                              className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white hover:text-orange-400 transition-colors duration-300 leading-tight"
+                              className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white hover:text-blue-400/80 transition-colors duration-300 leading-tight"
                               style={{
                                 fontFamily:
                                   "system-ui, -apple-system, sans-serif",
@@ -148,7 +148,7 @@ const FullscreenMenu = () => {
                             <a
                               href={item.href}
                               onClick={() => setIsOpen(false)}
-                              className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white hover:text-orange-400 transition-colors duration-300 leading-tight"
+                              className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white hover:text-blue-400/80 transition-colors duration-300 leading-tight"
                               style={{
                                 fontFamily:
                                   "system-ui, -apple-system, sans-serif",

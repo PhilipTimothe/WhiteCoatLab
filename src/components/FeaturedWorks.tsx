@@ -94,7 +94,10 @@ const FeaturedWorks: React.FC<FeaturedWorksProps> = ({
   // Calculate secondary colors based on transition progress
   const lineColor = transitionProgress > 0.5 ? "#cccccc" : "#666666";
   const categoryColor = transitionProgress > 0.5 ? "#666666" : "#9CA3AF";
-  const hoverTextColor = transitionProgress > 0.5 ? "#666666" : "#cccccc";
+  const hoverTextColor =
+    transitionProgress > 0.5
+      ? "rgba(66, 133, 244, 0.8)"
+      : "rgba(66, 133, 244, 0.8)";
   const borderColor = transitionProgress > 0.5 ? "#e5e5e5" : "#444444";
   const hoverBorderColor = transitionProgress > 0.5 ? "#cccccc" : "#666666";
 

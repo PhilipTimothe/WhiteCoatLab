@@ -9,6 +9,8 @@ interface VideoThumbnailProps {
   subtitle: string;
   onClick: () => void;
   delay?: number;
+  thumbnailStartTime?: number;
+  hoverStartTime?: number;
 }
 
 const VideoThumbnail: React.FC<VideoThumbnailProps> = ({
@@ -18,6 +20,8 @@ const VideoThumbnail: React.FC<VideoThumbnailProps> = ({
   subtitle,
   onClick,
   delay = 0,
+  thumbnailStartTime = 0.1,
+  hoverStartTime = 0,
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -68,14 +72,14 @@ const VideoThumbnail: React.FC<VideoThumbnailProps> = ({
     };
   }, [videoSrc]);
 
-  // Generate thumbnail from first frame
+  // Generate thumbnail from specified frame
   useEffect(() => {
     const video = videoRef.current;
     const canvas = canvasRef.current;
     if (!video || !canvas || !isVideoReady) return;
 
     const generateThumbnail = () => {
-      video.currentTime = 0.1;
+      video.currentTime = thumbnailStartTime;
       video.addEventListener("seeked", function onSeeked() {
         const ctx = canvas.getContext("2d");
         if (ctx) {
@@ -94,7 +98,7 @@ const VideoThumbnail: React.FC<VideoThumbnailProps> = ({
     } else {
       video.addEventListener("loadeddata", generateThumbnail);
     }
-  }, [isVideoReady]);
+  }, [isVideoReady, thumbnailStartTime]);
 
   // Handle hover in
   const handleMouseEnter = () => {
@@ -102,7 +106,7 @@ const VideoThumbnail: React.FC<VideoThumbnailProps> = ({
     const video = videoRef.current;
     if (!video || !isVideoReady) return;
 
-    video.currentTime = 0;
+    video.currentTime = hoverStartTime;
     video.play().catch((error) => {
       // Gracefully handle AbortError when play() is interrupted by pause()
       if (error.name !== "AbortError") {
@@ -113,7 +117,7 @@ const VideoThumbnail: React.FC<VideoThumbnailProps> = ({
     // Start looping every 10 seconds
     intervalRef.current = setInterval(() => {
       if (video && isHovered) {
-        video.currentTime = 0;
+        video.currentTime = hoverStartTime;
         video.play().catch((error) => {
           // Gracefully handle AbortError when play() is interrupted by pause()
           if (error.name !== "AbortError") {
@@ -136,7 +140,7 @@ const VideoThumbnail: React.FC<VideoThumbnailProps> = ({
 
     if (video && !video.paused) {
       video.pause();
-      video.currentTime = 0;
+      video.currentTime = hoverStartTime;
     }
   };
 
@@ -165,7 +169,7 @@ const VideoThumbnail: React.FC<VideoThumbnailProps> = ({
       {/* Hidden canvas for generating the thumbnail */}
       <canvas ref={canvasRef} className="hidden" />
 
-      {/* Thumbnail Image (first frame) */}
+      {/* Thumbnail Image (from specified frame) */}
       {thumbnail && (
         <img
           src={thumbnail}
@@ -201,11 +205,15 @@ const VideoThumbnail: React.FC<VideoThumbnailProps> = ({
       {/* Overlay on hover */}
       <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
 
-      {/* Text labels */}
-      <div className="absolute bottom-4 left-4 text-white">
-        <h4 className="text-sm font-normal mb-1 text-white">{title}</h4>
-        <p className="text-xs text-white/80">{subtitle}</p>
-      </div>
+      {/* Text labels - Only show if title and subtitle are provided */}
+      {(title || subtitle) && (
+        <div className="absolute bottom-4 left-4 text-white">
+          {title && (
+            <h4 className="text-sm font-normal mb-1 text-white">{title}</h4>
+          )}
+          {subtitle && <p className="text-xs text-white/80">{subtitle}</p>}
+        </div>
+      )}
     </motion.div>
   );
 };

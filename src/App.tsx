@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
+import { Link } from "react-router-dom";
 // import { motion } from "framer-motion";
 import VideoBackground from "./components/VideoBackground";
 import FullscreenMenu from "./components/FullscreenMenu";
@@ -85,18 +86,18 @@ function App() {
             <div className="flex justify-between items-center h-16 sm:h-20">
               {/* Desktop Navigation */}
               <div className="hidden lg:flex items-center space-x-8 xl:space-x-12">
-                <a
-                  href="#directors"
-                  className="text-xs xl:text-sm font-medium tracking-wider hover:text-orange-400 transition-colors"
+                <Link
+                  to="/"
+                  className="text-xs xl:text-sm font-medium tracking-wider hover:text-blue-400/80 transition-colors"
                 >
                   WHITECOATLAB
-                </a>
-                <a
-                  href="#photographers"
-                  className="text-xs xl:text-sm font-medium tracking-wider hover:text-orange-400 transition-colors"
+                </Link>
+                <Link
+                  to="/who-we-are"
+                  className="text-xs xl:text-sm font-medium tracking-wider hover:text-blue-400/80 transition-colors"
                 >
                   WHO WE ARE
-                </a>
+                </Link>
               </div>
 
               {/* Center Navigation */}
@@ -104,13 +105,13 @@ function App() {
                 <div className="flex items-center space-x-4 lg:space-x-8">
                   <a
                     href="#commercials"
-                    className="text-xs xl:text-sm font-medium tracking-wider hover:text-orange-400 transition-colors flex items-center"
+                    className="text-xs xl:text-sm font-medium tracking-wider hover:text-blue-400/80 transition-colors flex items-center"
                   >
                     WORKS<sup className="text-xs ml-1">01</sup>
                   </a>
                   <a
                     href="#narrative"
-                    className="text-xs xl:text-sm font-medium tracking-wider hover:text-orange-400 transition-colors flex items-center"
+                    className="text-xs xl:text-sm font-medium tracking-wider hover:text-blue-400/80 transition-colors flex items-center"
                   >
                     BRIEFS<sup className="text-xs ml-1">02</sup>
                   </a>
@@ -121,7 +122,7 @@ function App() {
               <div className="hidden sm:flex items-center space-x-4 lg:space-x-8">
                 <a
                   href="#contact"
-                  className="text-xs xl:text-sm font-medium tracking-wider hover:text-orange-400 transition-colors"
+                  className="text-xs xl:text-sm font-medium tracking-wider hover:text-blue-400/80 transition-colors"
                 >
                   CONTACT
                 </a>
@@ -133,7 +134,7 @@ function App() {
                 <FullscreenMenu />
                 <button
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className="text-white hover:text-orange-400 p-2"
+                  className="text-white hover:text-blue-400/80 p-2"
                   aria-label="Toggle mobile menu"
                 >
                   {isMenuOpen ? (
@@ -150,17 +151,25 @@ function App() {
           {isMenuOpen && (
             <div className="sm:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-md border-t border-gray-800 z-40">
               <div className="px-4 py-6 space-y-4">
-                {[
-                  "DIRECTORS",
-                  "PHOTOGRAPHERS",
-                  "COMMERCIALS",
-                  "NARRATIVE",
-                  "CONTACT",
-                ].map((item, i) => (
+                <Link
+                  to="/"
+                  className="block text-sm font-medium tracking-wider hover:text-blue-400/80 transition-colors py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  WHITECOATLAB
+                </Link>
+                <Link
+                  to="/who-we-are"
+                  className="block text-sm font-medium tracking-wider hover:text-blue-400/80 transition-colors py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  WHO WE ARE
+                </Link>
+                {["WORKS", "BRIEFS", "CONTACT"].map((item, i) => (
                   <a
                     key={i}
-                    href={`#${item.toLowerCase()}`}
-                    className="block text-sm font-medium tracking-wider hover:text-orange-400 transition-colors py-2"
+                    href={`#${item.toLowerCase().replace(" ", "-")}`}
+                    className="block text-sm font-medium tracking-wider hover:text-blue-400/80 transition-colors py-2"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item}
