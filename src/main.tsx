@@ -10,7 +10,9 @@ import "./index.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <Router>
+    <Router basename="/WhiteCoatLab">
+      {" "}
+      {/* 👈 Add this line */}
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/portraits" element={<PortraitsPage />} />
