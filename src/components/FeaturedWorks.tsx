@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import VideoThumbnail from "./VideoThumbnail";
 import VideoModal from "./VideoModal";
 import SimplePhotoGrid from "./SimplePhotoGrid";
+import TrustBar from "./TrustBar";
 
 interface FeaturedWorksProps {
   backgroundColor?: string;
@@ -84,10 +85,11 @@ const FeaturedWorks: React.FC<FeaturedWorksProps> = ({
       ],
     },
     {
-      title: "FABRIC™",
-      category: "Design & Development",
+      title: "",
+      category: "",
       delay: 0.2,
       hasVideos: false,
+      hasTrustBar: true,
     },
   ];
 
@@ -111,8 +113,9 @@ const FeaturedWorks: React.FC<FeaturedWorksProps> = ({
 
   return (
     <section
+      id="featured-works"
       ref={ref}
-      className="py-20 sm:py-24 md:py-32 lg:py-40 transition-colors duration-700 ease-out"
+      className="py-8 sm:py-12 md:py-16 lg:py-20 transition-colors duration-700 ease-out"
       style={{ backgroundColor }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -139,9 +142,9 @@ const FeaturedWorks: React.FC<FeaturedWorksProps> = ({
 
         {/* Works List */}
         <div className="space-y-12 sm:space-y-16 md:space-y-20 lg:space-y-24">
-          {works.map((work) => (
+          {works.map((work, index) => (
             <motion.div
-              key={work.title}
+              key={work.title || `work-${index}`}
               initial={{ opacity: 0, y: 30 }}
               animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{
@@ -170,66 +173,86 @@ const FeaturedWorks: React.FC<FeaturedWorksProps> = ({
                 </div>
               )}
 
-              {/* Simple Photo Grid for The Damai */}
+              {/* Simple Photo Grid for Photography */}
               {work.hasPhotos && work.photos && (
                 <div className="mb-8">
                   <SimplePhotoGrid images={work.photos} delay={work.delay} />
                 </div>
               )}
 
-              {/* Work Title and Category */}
-              <div
-                className="flex flex-col sm:flex-row sm:items-center sm:justify-between py-6 sm:py-8 border-b transition-all duration-300 cursor-pointer"
-                style={{
-                  borderColor: borderColor,
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = hoverBorderColor;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = borderColor;
-                }}
-              >
-                <div className="mb-2 sm:mb-0">
-                  <h3
-                    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl transition-colors duration-300"
-                    style={{
-                      fontFamily: "system-ui, -apple-system, sans-serif",
-                      fontWeight: 400,
-                      letterSpacing: "0.02em",
-                      lineHeight: 1.1,
-                      color: textColor,
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.color = hoverTextColor;
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.color = textColor;
-                    }}
-                  >
-                    {work.title}
-                  </h3>
+              {/* Trust Bar for FABRIC™ */}
+              {work.hasTrustBar && (
+                <div className="mb-8">
+                  <TrustBar
+                    backgroundColor={backgroundColor}
+                    textColor={textColor}
+                  />
                 </div>
-                <div className="flex-shrink-0">
-                  <span
-                    className="text-sm sm:text-base transition-colors duration-300"
-                    style={{
-                      fontFamily: "system-ui, -apple-system, sans-serif",
-                      fontWeight: 400,
-                      letterSpacing: "0.01em",
-                      color: categoryColor,
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.color = textColor;
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.color = categoryColor;
-                    }}
-                  >
-                    {work.category}
-                  </span>
+              )}
+
+              {/* Work Title and Category - Only show if title exists, and conditionally show border */}
+              {work.title && (
+                <div
+                  className={`flex flex-col sm:flex-row sm:items-center sm:justify-between py-6 sm:py-8 transition-all duration-300 cursor-pointer ${
+                    index < works.length - 1 ? "border-b" : "" // Only add border if not the last item
+                  }`}
+                  style={{
+                    borderColor: borderColor,
+                  }}
+                  onMouseEnter={(e) => {
+                    if (index < works.length - 1) {
+                      // Only apply hover effect if has border
+                      e.currentTarget.style.borderColor = hoverBorderColor;
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (index < works.length - 1) {
+                      // Only apply hover effect if has border
+                      e.currentTarget.style.borderColor = borderColor;
+                    }
+                  }}
+                >
+                  <div className="mb-2 sm:mb-0">
+                    <h3
+                      className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl transition-colors duration-300"
+                      style={{
+                        fontFamily: "system-ui, -apple-system, sans-serif",
+                        fontWeight: 400,
+                        letterSpacing: "0.02em",
+                        lineHeight: 1.1,
+                        color: textColor,
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = hoverTextColor;
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = textColor;
+                      }}
+                    >
+                      {work.title}
+                    </h3>
+                  </div>
+                  <div className="flex-shrink-0">
+                    <span
+                      className="text-sm sm:text-base transition-colors duration-300"
+                      style={{
+                        fontFamily: "system-ui, -apple-system, sans-serif",
+                        fontWeight: 400,
+                        letterSpacing: "0.01em",
+                        color: categoryColor,
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = textColor;
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = categoryColor;
+                      }}
+                    >
+                      {work.category}
+                    </span>
+                  </div>
                 </div>
-              </div>
+              )}
             </motion.div>
           ))}
         </div>

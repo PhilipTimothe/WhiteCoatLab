@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
-import { Link } from "react-router-dom";
+import { ChevronDown } from "lucide-react";
 // import { motion } from "framer-motion";
 import VideoBackground from "./components/VideoBackground";
-import FullscreenMenu from "./components/FullscreenMenu";
 import SplitTextReveal from "./components/SplitTextReveal";
 import FeaturedWorks from "./components/FeaturedWorks";
+import Navigation from "./components/Navigation";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [logoVisible, setLogoVisible] = useState(false);
   const [subtitleVisible, setSubtitleVisible] = useState(false);
@@ -81,104 +80,7 @@ function App() {
         </div>
 
         {/* Navigation */}
-        <nav className="relative z-50 w-full">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center h-16 sm:h-20">
-              {/* Desktop Navigation */}
-              <div className="hidden lg:flex items-center space-x-8 xl:space-x-12">
-                <Link
-                  to="/"
-                  className="text-xs xl:text-sm font-medium tracking-wider hover:text-blue-400/80 transition-colors"
-                >
-                  WHITECOATLAB
-                </Link>
-                <Link
-                  to="/who-we-are"
-                  className="text-xs xl:text-sm font-medium tracking-wider hover:text-blue-400/80 transition-colors"
-                >
-                  WHO WE ARE
-                </Link>
-              </div>
-
-              {/* Center Navigation */}
-              <div className="hidden md:flex items-center space-x-6 lg:space-x-8 xl:space-x-12">
-                <div className="flex items-center space-x-4 lg:space-x-8">
-                  <a
-                    href="#commercials"
-                    className="text-xs xl:text-sm font-medium tracking-wider hover:text-blue-400/80 transition-colors flex items-center"
-                  >
-                    WORKS<sup className="text-xs ml-1">01</sup>
-                  </a>
-                  <a
-                    href="#narrative"
-                    className="text-xs xl:text-sm font-medium tracking-wider hover:text-blue-400/80 transition-colors flex items-center"
-                  >
-                    BRIEFS<sup className="text-xs ml-1">02</sup>
-                  </a>
-                </div>
-              </div>
-
-              {/* Right Navigation */}
-              <div className="hidden sm:flex items-center space-x-4 lg:space-x-8">
-                <a
-                  href="#contact"
-                  className="text-xs xl:text-sm font-medium tracking-wider hover:text-blue-400/80 transition-colors"
-                >
-                  CONTACT
-                </a>
-                <FullscreenMenu />
-              </div>
-
-              {/* Mobile Navigation */}
-              <div className="flex items-center space-x-4 sm:hidden">
-                <FullscreenMenu />
-                <button
-                  onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className="text-white hover:text-blue-400/80 p-2"
-                  aria-label="Toggle mobile menu"
-                >
-                  {isMenuOpen ? (
-                    <X className="h-5 w-5" />
-                  ) : (
-                    <Menu className="h-5 w-5" />
-                  )}
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Mobile Menu */}
-          {isMenuOpen && (
-            <div className="sm:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-md border-t border-gray-800 z-40">
-              <div className="px-4 py-6 space-y-4">
-                <Link
-                  to="/"
-                  className="block text-sm font-medium tracking-wider hover:text-blue-400/80 transition-colors py-2"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  WHITECOATLAB
-                </Link>
-                <Link
-                  to="/who-we-are"
-                  className="block text-sm font-medium tracking-wider hover:text-blue-400/80 transition-colors py-2"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  WHO WE ARE
-                </Link>
-                {["WORKS", "BRIEFS", "CONTACT"].map((item, i) => (
-                  <a
-                    key={i}
-                    href={`#${item.toLowerCase().replace(" ", "-")}`}
-                    className="block text-sm font-medium tracking-wider hover:text-blue-400/80 transition-colors py-2"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item}
-                  </a>
-                ))}
-              </div>
-            </div>
-          )}
-        </nav>
+        <Navigation theme="dark" />
 
         {/* Centered Logo */}
         <div className="absolute inset-0 z-30 flex items-center justify-center px-4">
@@ -307,6 +209,21 @@ function App() {
         textColor={featuredTextColor}
         transitionProgress={backgroundTransition}
       />
+
+      {/* Footer - White Background */}
+      <footer className="bg-white border-t border-gray-200 py-12 sm:py-16 mt-auto">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <p className="text-xs tracking-widest text-gray-800 mb-4">
+              © 2025 WHITECOATLAB
+            </p>
+            <p className="text-xs text-gray-600">NEW YORK</p>
+          </div>
+        </div>
+      </footer>
+
+      {/* Scroll to Top Button */}
+      <ScrollToTop />
     </div>
   );
 }

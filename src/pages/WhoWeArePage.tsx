@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Menu, X } from "lucide-react";
-import { Link } from "react-router-dom";
-import FullscreenMenu from "../components/FullscreenMenu";
+import Navigation from "../components/Navigation";
+import ScrollToTop from "../components/ScrollToTop";
 
 const beliefs = [
   "We believe in the power of the unseen frame — the moment before and after the capture.",
@@ -13,7 +12,6 @@ const beliefs = [
 ];
 
 const WhoWeArePage = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll();
@@ -51,94 +49,7 @@ const WhoWeArePage = () => {
       </motion.div>
 
       {/* Navigation */}
-      <nav className="relative z-50 w-full bg-transparent">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16 sm:h-20">
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-8 xl:space-x-12">
-              <Link
-                to="/"
-                className="text-xs xl:text-sm font-medium tracking-wider hover:text-blue-400/80 transition-colors"
-              >
-                WHITECOATLAB
-              </Link>
-              <span className="text-xs xl:text-sm font-medium tracking-wider text-blue-400/80">
-                WHO WE ARE
-              </span>
-            </div>
-
-            {/* Center Navigation */}
-            <div className="hidden md:flex items-center space-x-6 lg:space-x-8 xl:space-x-12">
-              <div className="flex items-center space-x-4 lg:space-x-8">
-                <a
-                  href="#commercials"
-                  className="text-xs xl:text-sm font-medium tracking-wider hover:text-blue-400/80 transition-colors flex items-center"
-                >
-                  WORKS<sup className="text-xs ml-1">01</sup>
-                </a>
-                <a
-                  href="#narrative"
-                  className="text-xs xl:text-sm font-medium tracking-wider hover:text-blue-400/80 transition-colors flex items-center"
-                >
-                  BRIEFS<sup className="text-xs ml-1">02</sup>
-                </a>
-              </div>
-            </div>
-
-            {/* Right Navigation */}
-            <div className="hidden sm:flex items-center space-x-4 lg:space-x-8">
-              <a
-                href="#contact"
-                className="text-xs xl:text-sm font-medium tracking-wider hover:text-blue-400/80 transition-colors"
-              >
-                CONTACT
-              </a>
-              <FullscreenMenu />
-            </div>
-
-            {/* Mobile Navigation */}
-            <div className="flex items-center space-x-4 sm:hidden">
-              <FullscreenMenu />
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-white hover:text-blue-400/80 p-2"
-                aria-label="Toggle mobile menu"
-              >
-                {isMenuOpen ? (
-                  <X className="h-5 w-5" />
-                ) : (
-                  <Menu className="h-5 w-5" />
-                )}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="sm:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-md border-t border-gray-800 z-40">
-            <div className="px-4 py-6 space-y-4">
-              <Link
-                to="/"
-                className="block text-sm font-medium tracking-wider hover:text-blue-400/80 transition-colors py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                WHITECOATLAB
-              </Link>
-              {["WHO WE ARE", "WORKS", "BRIEFS", "CONTACT"].map((item, i) => (
-                <a
-                  key={i}
-                  href={`#${item.toLowerCase().replace(" ", "-")}`}
-                  className="block text-sm font-medium tracking-wider hover:text-blue-400/80 transition-colors py-2"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item}
-                </a>
-              ))}
-            </div>
-          </div>
-        )}
-      </nav>
+      <Navigation theme="dark" />
 
       {/* Hero Section */}
       <motion.section
@@ -301,7 +212,7 @@ const WhoWeArePage = () => {
                   "Where hypothesis meets creation. The space where failure teaches and success surprises.",
                 delay: 0.4,
               },
-            ].map((item) => (
+            ].map((item, index) => (
               <motion.div
                 key={item.title}
                 className="text-center group"
@@ -406,6 +317,9 @@ const WhoWeArePage = () => {
           </p>
         </motion.div>
       </section>
+
+      {/* Scroll to Top Button */}
+      <ScrollToTop />
     </div>
   );
 };
