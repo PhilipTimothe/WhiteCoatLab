@@ -7,6 +7,7 @@ import VisualStoriesPage from "./pages/VisualStoriesPage.tsx";
 import ArchitecturePage from "./pages/ArchitecturePage.tsx";
 import WhoWeArePage from "./pages/WhoWeArePage.tsx";
 import BriefsPage from "./pages/BriefsPage.tsx";
+import ContactPage from "./pages/ContactPage.tsx";
 import "./index.css";
 
 createRoot(document.getElementById("root")!).render(
@@ -19,6 +20,7 @@ createRoot(document.getElementById("root")!).render(
         <Route path="/architecture" element={<ArchitecturePage />} />
         <Route path="/who-we-are" element={<WhoWeArePage />} />
         <Route path="/briefs" element={<BriefsPage />} />
+        <Route path="/contact" element={<ContactPage />} />
       </Routes>
     </Router>
   </StrictMode>

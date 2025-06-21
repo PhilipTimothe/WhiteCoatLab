@@ -132,12 +132,16 @@ const Navigation: React.FC<NavigationProps> = ({ theme = "dark" }) => {
 
           {/* Right Navigation */}
           <div className="hidden sm:flex items-center space-x-4 lg:space-x-8">
-            <a
-              href="#contact"
-              className={`text-xs xl:text-sm font-medium tracking-wider transition-colors ${textColor} ${hoverColor}`}
+            <Link
+              to="/contact"
+              className={`text-xs xl:text-sm font-medium tracking-wider transition-colors ${
+                isCurrentPage("/contact")
+                  ? activeColor
+                  : `${textColor} ${hoverColor}`
+              }`}
             >
               CONTACT
-            </a>
+            </Link>
             <FullscreenMenu />
           </div>
 
@@ -205,13 +209,17 @@ const Navigation: React.FC<NavigationProps> = ({ theme = "dark" }) => {
             >
               FEATURED WORKS
             </button>
-            <a
-              href="#contact"
-              className={`block text-sm font-medium tracking-wider transition-colors py-2 ${textColor} ${hoverColor}`}
+            <Link
+              to="/contact"
+              className={`block text-sm font-medium tracking-wider transition-colors py-2 ${
+                isCurrentPage("/contact")
+                  ? activeColor
+                  : `${textColor} ${hoverColor}`
+              }`}
               onClick={() => setIsMenuOpen(false)}
             >
               CONTACT
-            </a>
+            </Link>
           </div>
         </div>
       )}
