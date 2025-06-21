@@ -48,7 +48,17 @@ const FullscreenMenu = () => {
         />
       </button>
 
-      {/* Menu Indicator - positioned under the plus button, hidden on very small screens */}
+      {/* Menu Indicator - positioned under the plus button, only show on mobile when closed */}
+      {!isOpen && (
+        <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 z-20 block sm:hidden">
+          <div className="flex flex-col items-center space-y-1">
+            <ChevronUp className="h-3 w-3 text-gray-400 animate-bounce" />
+            <span className="text-xs text-gray-400 tracking-wider">WORKS</span>
+          </div>
+        </div>
+      )}
+
+      {/* Desktop Menu Indicator - positioned under the plus button, hidden on mobile */}
       {!isOpen && (
         <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 z-20 hidden sm:block">
           <div className="flex flex-col items-center space-y-2">

@@ -37,7 +37,7 @@ const ContactPage = () => {
   return (
     <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white">
       {/* Navigation */}
-      <Navigation theme="light" />
+      <Navigation theme="dark" />
 
       {/* Main Content */}
       <main className="relative overflow-hidden">

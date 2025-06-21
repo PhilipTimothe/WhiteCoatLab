@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronLeft } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import FullscreenMenu from "./FullscreenMenu";
 
@@ -148,17 +148,29 @@ const Navigation: React.FC<NavigationProps> = ({ theme = "dark" }) => {
           {/* Mobile Navigation */}
           <div className="flex items-center space-x-4 sm:hidden">
             <FullscreenMenu />
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`${textColor} ${hoverColor} p-2`}
-              aria-label="Toggle mobile menu"
-            >
-              {isMenuOpen ? (
-                <X className="h-5 w-5" />
-              ) : (
-                <Menu className="h-5 w-5" />
+            <div className="flex items-center space-x-2">
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className={`${textColor} ${hoverColor} p-2`}
+                aria-label="Toggle mobile menu"
+              >
+                {isMenuOpen ? (
+                  <X className="h-5 w-5" />
+                ) : (
+                  <Menu className="h-5 w-5" />
+                )}
+              </button>
+
+              {/* Menu Indicator - Only show when menu is closed */}
+              {!isMenuOpen && (
+                <div className="flex items-center space-x-1">
+                  <ChevronLeft className="h-3 w-3 text-gray-400 animate-pulse" />
+                  <span className="text-xs text-gray-400 tracking-wider">
+                    MENU
+                  </span>
+                </div>
               )}
-            </button>
+            </div>
           </div>
         </div>
       </div>

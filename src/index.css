@@ -20,6 +20,15 @@
     transform: translateX(-33.3333%);
   }
 }
+
+/* Default animation for desktop */
 .animate-marquee {
   animation: scroll-marquee 40s linear infinite;
+}
+
+/* Mobile-specific animation - 2x faster (20s instead of 40s) */
+@media (max-width: 640px) {
+  .animate-marquee {
+    animation: scroll-marquee 40s linear infinite;
+  }
 }
