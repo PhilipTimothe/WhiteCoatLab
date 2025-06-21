@@ -15,56 +15,56 @@ const TrustBar: React.FC<TrustBarProps> = ({
       name: "Darby",
       src: "https://imagedelivery.net/ly47schtw9lMeXBIbG9ODw/622e9739-3af1-4af1-36ae-3651c07be400/public",
       sizeMultiplier: 0.95,
-      spacing: "2rem",
+      spacing: "-2rem",
       mobileSpacing: "-1rem", // Closer spacing for mobile
     },
     {
       name: "Cutler & Gross",
       src: "https://imagedelivery.net/ly47schtw9lMeXBIbG9ODw/84a6d75a-7bc1-46c4-432e-595355961500/public",
       sizeMultiplier: 3.0,
-      spacing: "2.5rem",
+      spacing: "-2rem",
       mobileSpacing: "-1rem", // Closer spacing for mobile
     },
     {
       name: "MCU",
       src: "https://imagedelivery.net/ly47schtw9lMeXBIbG9ODw/99aeefcf-3cdb-413a-1231-192fa6d94400/public",
       sizeMultiplier: 0.65,
-      spacing: "clamp(3rem, 6vw, 5rem)",
+      spacing: "clamp(4rem, 6vw, 5rem)",
       mobileSpacing: "3rem", // Closer spacing for mobile
     },
     {
       name: "Notion",
       src: "https://imagedelivery.net/ly47schtw9lMeXBIbG9ODw/7cad141a-2552-4744-cee6-bae407b2c900/public",
       sizeMultiplier: 0.85,
-      spacing: "clamp(3rem, 6vw, 5rem)",
+      spacing: "clamp(1rem, 6vw, 3rem)",
       mobileSpacing: "2.5rem", // Closer spacing for mobile
     },
     {
       name: "Atlassian",
       src: "https://imagedelivery.net/ly47schtw9lMeXBIbG9ODw/bd7d56c4-1a0b-47cb-0536-79218667ba00/public",
       sizeMultiplier: 1.15,
-      spacing: "clamp(3rem, 6vw, 5rem)",
+      spacing: "clamp(2rem, 6vw, 1rem)",
       mobileSpacing: "1rem", // Closer spacing for mobile
     },
     {
       name: "WTHN",
       src: "https://imagedelivery.net/ly47schtw9lMeXBIbG9ODw/2fff2bc5-b52f-481f-4caf-a900dd3aab00/public",
       sizeMultiplier: 1.15,
-      spacing: "clamp(3rem, 6vw, 5rem)",
+      spacing: "clamp(3rem, 6vw, 2rem)",
       mobileSpacing: "1rem", // Closer spacing for mobile
     },
     {
       name: "Tend",
       src: "https://imagedelivery.net/ly47schtw9lMeXBIbG9ODw/66960064-4da2-4066-3128-f7e4dbebe100/public",
       sizeMultiplier: 0.75,
-      spacing: "clamp(3rem, 6vw, 5rem)",
+      spacing: "clamp(3rem, 6vw, 3rem)",
       mobileSpacing: "1rem", // Closer spacing for mobile
     },
     {
       name: "Glowbar",
       src: "https://imagedelivery.net/ly47schtw9lMeXBIbG9ODw/e9a37d27-9281-4cbf-ddf1-56ae7b203b00/public",
       sizeMultiplier: 1.55,
-      spacing: "clamp(3rem, 6vw, 5rem)",
+      spacing: "clamp(3rem, 6vw, 2rem)",
       mobileSpacing: "1rem", // Closer spacing for mobile
     },
   ];
