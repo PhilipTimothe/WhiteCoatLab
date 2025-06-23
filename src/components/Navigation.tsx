@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Menu, X, ChevronLeft } from "lucide-react";
+import { Menu, X, ChevronLeft, Instagram } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import FullscreenMenu from "./FullscreenMenu";
 
@@ -132,6 +132,15 @@ const Navigation: React.FC<NavigationProps> = ({ theme = "dark" }) => {
 
           {/* Right Navigation */}
           <div className="hidden sm:flex items-center space-x-4 lg:space-x-8">
+            <a
+              href="https://www.instagram.com/whitecoatlab"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${textColor} ${hoverColor} transition-colors duration-300 p-1`}
+              aria-label="Follow us on Instagram"
+            >
+              <Instagram className="h-4 w-4 xl:h-5 xl:w-5" />
+            </a>
             <Link
               to="/contact"
               className={`text-xs xl:text-sm font-medium tracking-wider transition-colors ${
@@ -221,6 +230,16 @@ const Navigation: React.FC<NavigationProps> = ({ theme = "dark" }) => {
             >
               FEATURED WORKS
             </button>
+            <a
+              href="https://www.instagram.com/whitecoatlab"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`flex items-center space-x-2 text-sm font-medium tracking-wider transition-colors py-2 ${textColor} ${hoverColor}`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <Instagram className="h-4 w-4" />
+              <span>INSTAGRAM</span>
+            </a>
             <Link
               to="/contact"
               className={`block text-sm font-medium tracking-wider transition-colors py-2 ${
