@@ -6,12 +6,24 @@ import SplitTextReveal from "./components/SplitTextReveal";
 import FeaturedWorks from "./components/FeaturedWorks";
 import Navigation from "./components/Navigation";
 import ScrollToTop from "./components/ScrollToTop";
+import { useBackgroundColor } from "./hooks/useBackgroundColor";
 
 function App() {
   const [scrollY, setScrollY] = useState(0);
   const [logoVisible, setLogoVisible] = useState(false);
   const [subtitleVisible, setSubtitleVisible] = useState(false);
   const [backgroundTransition, setBackgroundTransition] = useState(0);
+
+  // Define background sections for dynamic color changes
+  const backgroundSections = [
+    { element: ".hero-section", color: "#000000" }, // Black for hero
+    { element: ".narrative-section", color: "#000000", threshold: 0.2 }, // Start transition earlier
+    { element: ".featured-works-section", color: "#ffffff", threshold: 0.3 }, // White for featured works
+    { element: ".footer-section", color: "#ffffff" }, // White for footer
+  ];
+
+  // Use the dynamic background hook
+  useBackgroundColor(backgroundSections);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -72,7 +84,7 @@ function App() {
   return (
     <div className="bg-black/90 text-white relative">
       {/* Hero Section */}
-      <div className="min-h-screen relative overflow-hidden">
+      <div className="min-h-screen relative overflow-hidden hero-section">
         {/* Background Video */}
         <div className="absolute inset-0 z-0">
           <VideoBackground />
@@ -147,7 +159,7 @@ function App() {
 
       {/* Narrative Section with Dynamic Background - Reduced Height */}
       <section
-        className="relative overflow-hidden transition-colors duration-700 ease-out"
+        className="relative overflow-hidden transition-colors duration-700 ease-out narrative-section"
         style={{
           backgroundColor: narrativeBackgroundColor,
           height: "35vh", // Increased from 30vh to 50vh for better text positioning
@@ -204,14 +216,16 @@ function App() {
       </section>
 
       {/* Featured Works Section with Dynamic Background */}
-      <FeaturedWorks
-        backgroundColor={featuredBackgroundColor}
-        textColor={featuredTextColor}
-        transitionProgress={backgroundTransition}
-      />
+      <div className="featured-works-section">
+        <FeaturedWorks
+          backgroundColor={featuredBackgroundColor}
+          textColor={featuredTextColor}
+          transitionProgress={backgroundTransition}
+        />
+      </div>
 
       {/* Footer - White Background */}
-      <footer className="bg-white border-t border-gray-200 py-12 sm:py-16 mt-auto">
+      <footer className="bg-white border-t border-gray-200 py-12 sm:py-16 mt-auto footer-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <p className="text-xs tracking-widest text-gray-800 mb-4">

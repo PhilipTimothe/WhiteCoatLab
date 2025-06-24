@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Base layer with smooth transitions */
+html,
+body {
+  background-color: #000000;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  transition: background-color 0.7s ease-out;
+}
+
+#root {
+  background-color: transparent; /* Let the body background show through */
+  min-height: 100vh;
+}
+
 /* Hide scrollbar for webkit browsers */
 .scrollbar-hide {
   -ms-overflow-style: none;
@@ -23,7 +38,7 @@
 
 /* Default animation for desktop */
 .animate-marquee {
-  animation: scroll-marquee 40s linear infinite;
+  animation: scroll-marquee 35s linear infinite;
 }
 
 /* Mobile-specific animation - 2x faster (20s instead of 40s) */

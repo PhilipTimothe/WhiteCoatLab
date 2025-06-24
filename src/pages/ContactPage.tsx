@@ -1,9 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Navigation from "../components/Navigation";
 import ScrollToTop from "../components/ScrollToTop";
 
 const ContactPage = () => {
+  // Set page background to black
+  useEffect(() => {
+    document.body.style.backgroundColor = "#000000";
+    document.documentElement.style.backgroundColor = "#000000";
+
+    return () => {
+      // Reset to default when leaving page
+      document.body.style.backgroundColor = "#000000";
+      document.documentElement.style.backgroundColor = "#000000";
+    };
+  }, []);
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 

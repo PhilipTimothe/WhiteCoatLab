@@ -12,6 +12,18 @@ const beliefs = [
 ];
 
 const WhoWeArePage = () => {
+  // Set page background to black
+  useEffect(() => {
+    document.body.style.backgroundColor = "#000000";
+    document.documentElement.style.backgroundColor = "#000000";
+
+    return () => {
+      // Reset to default when leaving page
+      document.body.style.backgroundColor = "#000000";
+      document.documentElement.style.backgroundColor = "#000000";
+    };
+  }, []);
+
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll();

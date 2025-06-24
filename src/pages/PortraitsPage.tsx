@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import PortraitsGrid from "../components/PortraitsGrid";
 import Navigation from "../components/Navigation";
 import ScrollToTop from "../components/ScrollToTop";
 
 const PortraitsPage = () => {
+  // Set page background to black
+  useEffect(() => {
+    document.body.style.backgroundColor = "#000000";
+    document.documentElement.style.backgroundColor = "#000000";
+
+    return () => {
+      // Reset to default when leaving page
+      document.body.style.backgroundColor = "#000000";
+      document.documentElement.style.backgroundColor = "#000000";
+    };
+  }, []);
+
   // All portrait image IDs - including new additions
   const portraitImages = [
     "25350851-f816-46bb-6ca6-ffc944e6e900",
