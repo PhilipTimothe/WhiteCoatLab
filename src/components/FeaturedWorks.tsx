@@ -33,7 +33,7 @@ const FeaturedWorks: React.FC<FeaturedWorksProps> = ({
       {
         threshold: 0.1,
         rootMargin: "-10% 0px -10% 0px",
-      }
+      },
     );
 
     if (ref.current) {
@@ -56,7 +56,7 @@ const FeaturedWorks: React.FC<FeaturedWorksProps> = ({
       videos: [
         {
           videoSrc:
-            "https://customer-03tgn6o4u930capn.cloudflarestream.com/5a83fbfc9e04432578776d9cacf19d5b/manifest/video.m3u8",
+            "https://customer-o9ac0gnpm96dfbq7.cloudflarestream.com/5b3e0e8634491c86fad38b5b94aaaffe/manifest/video.m3u8",
           posterSrc:
             "https://images.pexels.com/photos/3945313/pexels-photo-3945313.jpeg?auto=compress&cs=tinysrgb&w=800",
           title: "Cutler & Gross",
@@ -64,7 +64,7 @@ const FeaturedWorks: React.FC<FeaturedWorksProps> = ({
         },
         {
           videoSrc:
-            "https://customer-03tgn6o4u930capn.cloudflarestream.com/1ac895b4a801d10e83a7ee3284d0b50f/manifest/video.m3u8",
+            "https://customer-o9ac0gnpm96dfbq7.cloudflarestream.com/068890784fc3bd9077f6c3dcf36f787c/manifest/video.m3u8",
           posterSrc:
             "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800",
           title: "Glowbar",
