@@ -22,49 +22,49 @@ const VisualStoriesPage = () => {
     {
       title: "Cutler & Gross",
       videoSrc:
-        "https://customer-03tgn6o4u930capn.cloudflarestream.com/5a83fbfc9e04432578776d9cacf19d5b/manifest/video.m3u8",
+        "https://customer-o9ac0gnpm96dfbq7.cloudflarestream.com/5b3e0e8634491c86fad38b5b94aaaffe/manifest/video.m3u8",
       posterSrc:
         "https://images.pexels.com/photos/3945313/pexels-photo-3945313.jpeg?auto=compress&cs=tinysrgb&w=800",
     },
     {
       title: "Glowbar",
       videoSrc:
-        "https://customer-03tgn6o4u930capn.cloudflarestream.com/1ac895b4a801d10e83a7ee3284d0b50f/manifest/video.m3u8",
+        "https://customer-o9ac0gnpm96dfbq7.cloudflarestream.com/068890784fc3bd9077f6c3dcf36f787c/manifest/video.m3u8",
       posterSrc:
         "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800",
     },
     {
       title: "Grand Street Pizza",
       videoSrc:
-        "https://customer-03tgn6o4u930capn.cloudflarestream.com/87ea424656f85c90562a8e91f720d777/manifest/video.m3u8",
+        "https://customer-o9ac0gnpm96dfbq7.cloudflarestream.com/14f8999012826353ec8af7c17a1eb94f/manifest/video.m3u8",
       posterSrc:
         "https://images.pexels.com/photos/1566837/pexels-photo-1566837.jpeg?auto=compress&cs=tinysrgb&w=800",
       thumbnailStartTime: 0.2, // 6 frames at 30fps = 6/30 = 0.2 seconds
       hoverStartTime: 0.2, // Start hover video at 6 frames in
     },
-    {
-      title: "Givenchy Project",
-      videoSrc:
-        "https://customer-03tgn6o4u930capn.cloudflarestream.com/e3adda6538f131965040dff41c78763d/manifest/video.m3u8",
-      posterSrc:
-        "https://images.pexels.com/photos/934070/pexels-photo-934070.jpeg?auto=compress&cs=tinysrgb&w=800",
-      thumbnailStartTime: 0.167, // 5 frames at 30fps = 5/30 = 0.167 seconds
-      hoverStartTime: 0.167, // Start hover video at 5 frames in
-    },
+    // {
+    //   title: "Givenchy Project",
+    //   videoSrc:
+    //     "https://customer-03tgn6o4u930capn.cloudflarestream.com/e3adda6538f131965040dff41c78763d/manifest/video.m3u8",
+    //   posterSrc:
+    //     "https://images.pexels.com/photos/934070/pexels-photo-934070.jpeg?auto=compress&cs=tinysrgb&w=800",
+    //   thumbnailStartTime: 0.167, // 5 frames at 30fps = 5/30 = 0.167 seconds
+    //   hoverStartTime: 0.167, // Start hover video at 5 frames in
+    // },
     {
       title: "Darby Construction",
       videoSrc:
-        "https://customer-03tgn6o4u930capn.cloudflarestream.com/6422435b78aca34ac7cf027fcb39f1fd/manifest/video.m3u8",
+        "https://customer-o9ac0gnpm96dfbq7.cloudflarestream.com/5982b945af337ab4f5d6e7e1a4b12460/manifest/video.m3u8",
       posterSrc:
         "https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800",
     },
-    {
-      title: "In The Lab",
-      videoSrc:
-        "https://customer-03tgn6o4u930capn.cloudflarestream.com/6afbf1a3ab525a17b50c36e5a068169b/manifest/video.m3u8",
-      posterSrc:
-        "https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
+    // {
+    //   title: "In The Lab",
+    //   videoSrc:
+    //     "https://customer-03tgn6o4u930capn.cloudflarestream.com/6afbf1a3ab525a17b50c36e5a068169b/manifest/video.m3u8",
+    //   posterSrc:
+    //     "https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg?auto=compress&cs=tinysrgb&w=800",
+    // },
   ];
 
   return (

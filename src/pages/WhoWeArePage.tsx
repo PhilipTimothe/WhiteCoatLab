@@ -224,7 +224,7 @@ const WhoWeArePage = () => {
                   "Where hypothesis meets creation. The space where failure teaches and success surprises.",
                 delay: 0.4,
               },
-            ].map((item, index) => (
+            ].map((item) => (
               <motion.div
                 key={item.title}
                 className="text-center group"

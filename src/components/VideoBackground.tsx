@@ -16,7 +16,7 @@ const VideoBackground = () => {
     if (!video) return;
 
     const videoSrc =
-      "https://customer-03tgn6o4u930capn.cloudflarestream.com/5a83fbfc9e04432578776d9cacf19d5b/manifest/video.m3u8";
+      "https://customer-o9ac0gnpm96dfbq7.cloudflarestream.com/5b3e0e8634491c86fad38b5b94aaaffe/manifest/video.m3u8";
 
     if (Hls.isSupported()) {
       const hls = new Hls();
