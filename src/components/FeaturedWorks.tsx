@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import VideoThumbnail from "./VideoThumbnail";
 import VideoModal from "./VideoModal";
 import SimplePhotoGrid from "./SimplePhotoGrid";
-import TrustBar from "./TrustBar";
 
 interface FeaturedWorksProps {
   backgroundColor?: string;
@@ -83,13 +82,6 @@ const FeaturedWorks: React.FC<FeaturedWorksProps> = ({
         "https://imagedelivery.net/ly47schtw9lMeXBIbG9ODw/a5a77610-08d3-480c-1fe2-6ea83cfefd00/public",
         "https://imagedelivery.net/ly47schtw9lMeXBIbG9ODw/1d4c059b-724e-4ade-2184-cc2b6e8acc00/public",
       ],
-    },
-    {
-      title: "",
-      category: "",
-      delay: 0.2,
-      hasVideos: false,
-      hasTrustBar: true,
     },
   ];
 
@@ -177,16 +169,6 @@ const FeaturedWorks: React.FC<FeaturedWorksProps> = ({
               {work.hasPhotos && work.photos && (
                 <div className="mb-8">
                   <SimplePhotoGrid images={work.photos} delay={work.delay} />
-                </div>
-              )}
-
-              {/* Trust Bar for FABRIC™ */}
-              {work.hasTrustBar && (
-                <div className="mb-8">
-                  <TrustBar
-                    backgroundColor={backgroundColor}
-                    textColor={textColor}
-                  />
                 </div>
               )}
 

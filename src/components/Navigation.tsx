@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Menu, X, ChevronLeft, Instagram } from "lucide-react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import FullscreenMenu from "./FullscreenMenu";
 
 interface NavigationProps {
@@ -10,7 +10,6 @@ interface NavigationProps {
 const Navigation: React.FC<NavigationProps> = ({ theme = "dark" }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
 
   // Determine text colors based on theme
   const textColor = theme === "dark" ? "text-white" : "text-black";
@@ -21,66 +20,6 @@ const Navigation: React.FC<NavigationProps> = ({ theme = "dark" }) => {
 
   // Helper function to check if current page matches
   const isCurrentPage = (path: string) => location.pathname === path;
-
-  // Handle scrolling to Featured Works after navigation
-  useEffect(() => {
-    // Check if we just navigated to home with the featured-works hash
-    if (location.pathname === "/" && location.hash === "#featured-works") {
-      // Small delay to ensure the page has loaded
-      const timer = setTimeout(() => {
-        const featuredSection = document.querySelector("#featured-works");
-        if (featuredSection) {
-          // Use custom smooth scroll with 1000ms duration for cross-page navigation
-          smoothScrollTo(featuredSection, 1000);
-        }
-      }, 100);
-
-      return () => clearTimeout(timer);
-    }
-  }, [location]);
-
-  // Smooth scroll function with configurable duration
-  const smoothScrollTo = (element: Element, duration: number = 1000) => {
-    const targetPosition = element.offsetTop;
-    const startPosition = window.pageYOffset;
-    const distance = targetPosition - startPosition;
-    let start: number | null = null;
-
-    function animation(currentTime: number) {
-      if (start === null) start = currentTime;
-      const timeElapsed = currentTime - start;
-      const run = ease(timeElapsed, startPosition, distance, duration);
-      window.scrollTo(0, run);
-      if (timeElapsed < duration) requestAnimationFrame(animation);
-    }
-
-    // Easing function for smooth animation
-    function ease(t: number, b: number, c: number, d: number) {
-      t /= d / 2;
-      if (t < 1) return (c / 2) * t * t + b;
-      t--;
-      return (-c / 2) * (t * (t - 2) - 1) + b;
-    }
-
-    requestAnimationFrame(animation);
-  };
-
-  // Helper function to handle Featured Works link
-  const handleFeaturedWorksClick = (e: React.MouseEvent) => {
-    // If we're not on the home page, navigate to home with hash
-    if (location.pathname !== "/") {
-      navigate("/#featured-works");
-      return;
-    }
-
-    // If we're on the home page, prevent default and scroll to section with custom smooth scroll
-    e.preventDefault();
-    const featuredSection = document.querySelector("#featured-works");
-    if (featuredSection) {
-      // Use 1500ms for same-page scrolling (slightly slower for better UX)
-      smoothScrollTo(featuredSection, 1000);
-    }
-  };
 
   return (
     <nav className="relative z-50 w-full">
@@ -104,28 +43,32 @@ const Navigation: React.FC<NavigationProps> = ({ theme = "dark" }) => {
                   : `${textColor} ${hoverColor}`
               }`}
             >
-              WHO WE ARE
+              STUDIO
             </Link>
           </div>
 
           {/* Center Navigation */}
           <div className="hidden md:flex items-center space-x-6 lg:space-x-8 xl:space-x-12">
             <div className="flex items-center space-x-4 lg:space-x-8">
-              <button
-                onClick={handleFeaturedWorksClick}
-                className={`text-xs xl:text-sm font-medium tracking-wider transition-colors flex items-center ${textColor} ${hoverColor} cursor-pointer`}
-              >
-                FEATURED WORKS<sup className="text-xs ml-1">01</sup>
-              </button>
               <Link
-                to="/briefs"
+                to="/work"
                 className={`text-xs xl:text-sm font-medium tracking-wider transition-colors flex items-center ${
-                  isCurrentPage("/briefs")
+                  isCurrentPage("/work")
                     ? activeColor
                     : `${textColor} ${hoverColor}`
                 }`}
               >
-                BRIEFS<sup className="text-xs ml-1">02</sup>
+                WORK<sup className="text-xs ml-1">01</sup>
+              </Link>
+              <Link
+                to="/approach"
+                className={`text-xs xl:text-sm font-medium tracking-wider transition-colors flex items-center ${
+                  isCurrentPage("/approach")
+                    ? activeColor
+                    : `${textColor} ${hoverColor}`
+                }`}
+              >
+                APPROACH<sup className="text-xs ml-1">02</sup>
               </Link>
             </div>
           </div>
@@ -149,7 +92,7 @@ const Navigation: React.FC<NavigationProps> = ({ theme = "dark" }) => {
                   : `${textColor} ${hoverColor}`
               }`}
             >
-              CONTACT
+              START
             </Link>
             <FullscreenMenu />
           </div>
@@ -208,28 +151,30 @@ const Navigation: React.FC<NavigationProps> = ({ theme = "dark" }) => {
               }`}
               onClick={() => setIsMenuOpen(false)}
             >
-              WHO WE ARE
+              STUDIO
             </Link>
             <Link
-              to="/briefs"
+              to="/approach"
               className={`block text-sm font-medium tracking-wider transition-colors py-2 ${
-                isCurrentPage("/briefs")
+                isCurrentPage("/approach")
                   ? activeColor
                   : `${textColor} ${hoverColor}`
               }`}
               onClick={() => setIsMenuOpen(false)}
             >
-              BRIEFS
+              APPROACH
             </Link>
-            <button
-              onClick={(e) => {
-                handleFeaturedWorksClick(e);
-                setIsMenuOpen(false);
-              }}
-              className={`block text-sm font-medium tracking-wider transition-colors py-2 ${textColor} ${hoverColor} text-left w-full`}
+            <Link
+              to="/work"
+              className={`block text-sm font-medium tracking-wider transition-colors py-2 ${
+                isCurrentPage("/work")
+                  ? activeColor
+                  : `${textColor} ${hoverColor}`
+              }`}
+              onClick={() => setIsMenuOpen(false)}
             >
-              FEATURED WORKS
-            </button>
+              WORK
+            </Link>
             <a
               href="https://www.instagram.com/whitecoatlab"
               target="_blank"
@@ -249,7 +194,7 @@ const Navigation: React.FC<NavigationProps> = ({ theme = "dark" }) => {
               }`}
               onClick={() => setIsMenuOpen(false)}
             >
-              CONTACT
+              START
             </Link>
           </div>
         </div>

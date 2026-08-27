@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import BriefsGrid from "../components/BriefsGrid";
 import Navigation from "../components/Navigation";
 import ScrollToTop from "../components/ScrollToTop";
+import { briefs } from "../data/briefs";
 
 const BriefsPage = () => {
   // Set page background to black
@@ -16,23 +17,6 @@ const BriefsPage = () => {
       document.documentElement.style.backgroundColor = "#000000";
     };
   }, []);
-
-  const briefs = [
-    {
-      title: "It All Start",
-      thumbnail:
-        "https://imagedelivery.net/ly47schtw9lMeXBIbG9ODw/41dc3080-06cb-4e9f-e3f1-70dae20bc500/public",
-      slides: [
-        "https://imagedelivery.net/ly47schtw9lMeXBIbG9ODw/41dc3080-06cb-4e9f-e3f1-70dae20bc500/public",
-        "https://imagedelivery.net/ly47schtw9lMeXBIbG9ODw/ef1e0398-fab5-4ee8-6e17-4019f0815900/public",
-        "https://imagedelivery.net/ly47schtw9lMeXBIbG9ODw/afb7bdc7-ff84-4292-037b-18c3ea3e3300/public",
-        "https://imagedelivery.net/ly47schtw9lMeXBIbG9ODw/3b28c9e6-7fc6-4615-204b-4034dd593f00/public",
-        "https://imagedelivery.net/ly47schtw9lMeXBIbG9ODw/e9d87530-1122-402c-a151-370f12335a00/public",
-        "https://imagedelivery.net/ly47schtw9lMeXBIbG9ODw/e205b728-b32c-4b6e-ca8d-69ecd5993600/public",
-        "https://imagedelivery.net/ly47schtw9lMeXBIbG9ODw/a7e928b3-7d8e-477c-164a-1b391ab0f000/public",
-      ],
-    },
-  ];
 
   return (
     <div className="min-h-screen bg-black text-white flex flex-col">
@@ -109,10 +93,9 @@ const BriefsPage = () => {
       <footer className="border-t border-gray-800 py-12 sm:py-16 mt-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <p className="text-xs tracking-widest text-gray-400 mb-4">
-              © 2025 WHITECOATLAB
+            <p className="text-xs tracking-widest text-gray-400">
+              MARKETING STUDIO · NEW YORK · © 2026
             </p>
-            <p className="text-xs text-gray-500">NEW YORK</p>
           </div>
         </div>
       </footer>

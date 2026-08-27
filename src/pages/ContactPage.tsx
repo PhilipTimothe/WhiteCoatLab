@@ -76,7 +76,7 @@ const ContactPage = () => {
                   transition={{ duration: 1, delay: 0.3 }}
                 />
                 <span className="text-xs tracking-[0.3em] text-neutral-500 dark:text-neutral-400 font-light uppercase">
-                  Get in Touch
+                  Start
                 </span>
                 <motion.div
                   className="w-12 h-px bg-gradient-to-r from-transparent via-neutral-400 dark:via-neutral-600 to-transparent"
@@ -97,11 +97,11 @@ const ContactPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.5 }}
               >
-                <span className="block">Let's Create</span>
+                <span className="block">Book a</span>
                 <span className="block text-blue-500 dark:text-blue-400">
-                  Something
+                  Discovery
                 </span>
-                <span className="block">Extraordinary</span>
+                <span className="block">Call</span>
               </motion.h1>
 
               <motion.p
@@ -111,9 +111,9 @@ const ContactPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
               >
-                Whether you're building something new or reimagining a brand,
-                we'd love to hear from you. Fill out the form and let's start a
-                conversation about bringing your vision to life.
+                Leave with a plan either way. Thirty minutes to look at where
+                your business is and the highest-leverage move next. You walk
+                away with direction whether or not we work together.
               </motion.p>
             </motion.div>
 
@@ -342,7 +342,7 @@ const ContactPage = () => {
               <div className="w-16 h-px bg-gradient-to-r from-transparent via-neutral-400 dark:via-neutral-600 to-transparent" />
             </div>
             <p className="text-xs text-neutral-400 dark:text-neutral-500 tracking-wider">
-              © 2025 WHITECOATLAB
+              MARKETING STUDIO · NEW YORK · © 2026
             </p>
           </div>
         </motion.section>

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
+import { Link } from "react-router-dom";
 // import { motion } from "framer-motion";
 import VideoBackground from "./components/VideoBackground";
 import SplitTextReveal from "./components/SplitTextReveal";
 import FeaturedWorks from "./components/FeaturedWorks";
+import TrustBar from "./components/TrustBar";
 import Navigation from "./components/Navigation";
 import ScrollToTop from "./components/ScrollToTop";
 import { useBackgroundColor } from "./hooks/useBackgroundColor";
@@ -80,6 +82,10 @@ function App() {
     backgroundTransition * 255
   }, ${backgroundTransition * 255})`;
   const featuredTextColor = backgroundTransition > 0.5 ? "#000000" : "#ffffff";
+  const featuredSecondaryColor =
+    backgroundTransition > 0.5 ? "#666666" : "#9CA3AF";
+  const featuredBorderColor =
+    backgroundTransition > 0.5 ? "#e5e5e5" : "#444444";
 
   return (
     <div className="bg-black/90 text-white relative">
@@ -132,6 +138,11 @@ function App() {
                 >
                   NEW YORK
                 </p>
+                <p className="text-xs sm:text-sm max-w-xl mx-auto font-thin text-white/70 mt-4">
+                  For businesses with a real marketing need and no clear
+                  roadmap. We build the clarity, shape the direction, then make
+                  the work that delivers on it.
+                </p>
               </div>
             </div>
           </div>
@@ -150,7 +161,7 @@ function App() {
           <div className="flex flex-col">
             <div className="-rotate-90 origin-center py-1 leading-none">
               <span className="text-xs text-gray-400 tracking-widest whitespace-nowrap">
-                CREATIVE PRODUCTION
+                MARKETING STUDIO
               </span>
             </div>
           </div>
@@ -162,7 +173,7 @@ function App() {
         className="relative overflow-hidden transition-colors duration-700 ease-out narrative-section"
         style={{
           backgroundColor: narrativeBackgroundColor,
-          height: "35vh", // Increased from 30vh to 50vh for better text positioning
+          height: "35vh",
         }}
       >
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center pt-16 sm:pt-20 md:pt-24">
@@ -171,23 +182,23 @@ function App() {
               <div className="lg:col-start-2 lg:col-span-10">
                 <div
                   className="space-y-4"
-                  style={{ transform: `translateY(${scrollY * -0.1}px)` }}
+                  style={{ transform: `translateY(${scrollY * 0.02}px)` }}
                 >
                   <div className="space-y-2">
                     <SplitTextReveal
-                      text="We craft stories that move people — remarkable,"
+                      text="We become the marketing function your"
                       className="text-sm sm:text-1xl md:text-3xl lg:text-4xl xl:text-5xl leading-tight transition-colors duration-700 ease-out"
                       delay={0}
                       textColor={narrativeTextColor}
                     />
                     <SplitTextReveal
-                      text="and emotionally unforgettable narratives that"
+                      text="business doesn't have. We set the direction,"
                       className="text-sm sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-tight transition-colors duration-700 ease-out"
                       delay={0.1}
                       textColor={narrativeTextColor}
                     />
                     <SplitTextReveal
-                      text="live far beyond the frame."
+                      text="then produce the work it calls for."
                       className="text-sm sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-tight transition-colors duration-700 ease-out"
                       delay={0.2}
                       textColor={narrativeTextColor}
@@ -205,7 +216,7 @@ function App() {
                           backgroundTransition > 0.1 ? "#666666" : "#9CA3AF",
                       }}
                     >
-                      STORYTELLING
+                      MARKETING STUDIO
                     </span>
                   </div>
                 </div>
@@ -216,22 +227,136 @@ function App() {
       </section>
 
       {/* Featured Works Section with Dynamic Background */}
-      <div className="featured-works-section">
+      <div
+        className="featured-works-section transition-colors duration-700 ease-out"
+        style={{ backgroundColor: featuredBackgroundColor }}
+      >
+        {/* Three-Layer Teaser */}
+        <section className="py-12 sm:py-16 md:py-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+              <div>
+                <h3
+                  className="text-lg sm:text-xl mb-2 transition-colors duration-700 ease-out"
+                  style={{ color: featuredTextColor }}
+                >
+                  Discovery
+                </h3>
+                <p
+                  className="text-sm font-thin leading-relaxed transition-colors duration-700 ease-out"
+                  style={{ color: featuredSecondaryColor }}
+                >
+                  Before anything gets made, we work to understand your goals,
+                  your brand, and your market, then define what the work should
+                  be.
+                </p>
+              </div>
+              <div>
+                <h3
+                  className="text-lg sm:text-xl mb-2 transition-colors duration-700 ease-out"
+                  style={{ color: featuredTextColor }}
+                >
+                  Strategy
+                </h3>
+                <p
+                  className="text-sm font-thin leading-relaxed transition-colors duration-700 ease-out"
+                  style={{ color: featuredSecondaryColor }}
+                >
+                  Out of discovery comes the direction, and that is the thing
+                  everything else serves. This is what you are actually hiring.
+                </p>
+              </div>
+              <div>
+                <h3
+                  className="text-lg sm:text-xl mb-2 transition-colors duration-700 ease-out"
+                  style={{ color: featuredTextColor }}
+                >
+                  Production
+                </h3>
+                <p
+                  className="text-sm font-thin leading-relaxed transition-colors duration-700 ease-out"
+                  style={{ color: featuredSecondaryColor }}
+                >
+                  Photography, video, and digital work, produced in service of
+                  the strategy above it.
+                </p>
+              </div>
+            </div>
+            <Link
+              to="/approach"
+              className="inline-block mt-8 text-xs tracking-widest font-medium border-b pb-1 hover:text-blue-500 hover:border-blue-500 transition-colors duration-700 ease-out"
+              style={{
+                color: featuredTextColor,
+                borderColor: featuredTextColor,
+              }}
+            >
+              SEE OUR APPROACH
+            </Link>
+          </div>
+        </section>
+
+        {/* Darby Flagship Card */}
+        <section
+          className="py-12 sm:py-16 md:py-20 border-t transition-colors duration-700 ease-out"
+          style={{ borderColor: featuredBorderColor }}
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <Link to="/work" className="group block">
+              <span
+                className="text-xs tracking-widest font-medium transition-colors duration-700 ease-out block"
+                style={{ color: featuredSecondaryColor }}
+              >
+                FEATURED CASE STUDY
+              </span>
+              <div className="inline-block bg-white rounded-md px-8 py-6 mt-6 mb-2 shadow-lg">
+                <img
+                  src="/darbylogo.png"
+                  alt="Darby Construction Services"
+                  className="h-48 sm:h-64 w-auto"
+                />
+              </div>
+              <h3
+                className="text-3xl sm:text-4xl md:text-5xl font-light mb-4 group-hover:text-blue-500 transition-colors duration-700 ease-out"
+                style={{ color: featuredTextColor }}
+              >
+                The function Darby didn't have.
+              </h3>
+              <p
+                className="text-sm sm:text-base font-thin max-w-2xl mb-4 transition-colors duration-700 ease-out"
+                style={{ color: featuredSecondaryColor }}
+              >
+                Two years, 29 projects, and more than fourteen active sites. See
+                how a recurring need became a dependable program.
+              </p>
+              <span
+                className="inline-block text-xs tracking-widest font-medium border-b pb-1 group-hover:text-blue-500 group-hover:border-blue-500 transition-colors duration-700 ease-out"
+                style={{
+                  color: featuredTextColor,
+                  borderColor: featuredTextColor,
+                }}
+              >
+                READ THE CASE STUDY
+              </span>
+            </Link>
+          </div>
+        </section>
+
         <FeaturedWorks
           backgroundColor={featuredBackgroundColor}
           textColor={featuredTextColor}
           transitionProgress={backgroundTransition}
         />
+
+        <TrustBar backgroundColor="#ffffff" textColor="#000000" />
       </div>
 
       {/* Footer - White Background */}
       <footer className="bg-white border-t border-gray-200 py-12 sm:py-16 mt-auto footer-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <p className="text-xs tracking-widest text-gray-800 mb-4">
-              © 2025 WHITECOATLAB
+            <p className="text-xs tracking-widest text-gray-800">
+              MARKETING STUDIO · NEW YORK · © 2026
             </p>
-            <p className="text-xs text-gray-600">NEW YORK</p>
           </div>
         </div>
       </footer>

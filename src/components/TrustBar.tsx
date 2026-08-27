@@ -104,9 +104,7 @@ const TrustBar: React.FC<TrustBarProps> = ({
             className="text-sm sm:text-base mt-4 max-w-2xl mx-auto"
             style={{ color: textColor === "#000000" ? "#666666" : "#9CA3AF" }}
           >
-            These brands represent the exceptional spaces we've had the
-            privilege to capture — through direct commissions and collaborations
-            with construction and brand teams.
+            Brands that trusted us to shape the message and make it.
           </p>
         </div>
 

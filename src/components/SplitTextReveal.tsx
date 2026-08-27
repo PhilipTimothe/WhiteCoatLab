@@ -5,12 +5,14 @@ interface SplitTextRevealProps {
   text: string;
   className?: string;
   delay?: number;
+  textColor?: string;
 }
 
 const SplitTextReveal: React.FC<SplitTextRevealProps> = ({
   text,
   className = "",
   delay = 0,
+  textColor = "#ffffff",
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -43,7 +45,11 @@ const SplitTextReveal: React.FC<SplitTextRevealProps> = ({
   const words = text.split(" ");
 
   return (
-    <div ref={ref} className={`overflow-hidden ${className}`}>
+    <div
+      ref={ref}
+      className={`overflow-hidden ${className}`}
+      style={{ color: textColor }}
+    >
       <motion.div
         initial="hidden"
         animate={isVisible ? "visible" : "hidden"}

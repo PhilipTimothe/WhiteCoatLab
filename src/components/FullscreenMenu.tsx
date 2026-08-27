@@ -5,19 +5,11 @@ import { Link } from "react-router-dom";
 
 const menuCategories = [
   {
-    title: "Photography",
+    title: "Archive",
     items: [
       { name: "PORTRAITS", href: "/portraits", isLink: true },
-      { name: "BLACK & WHITE", href: "#black-and-white", isLink: false },
-      { name: "LIFE IN COLOR", href: "#life-in-color", isLink: false },
       { name: "ARCHITECTURE", href: "/architecture", isLink: true },
-    ],
-  },
-  {
-    title: "Film",
-    items: [
       { name: "VISUAL STORIES", href: "/visual-stories", isLink: true },
-      { name: "DOCUMENTARY", href: "#documentary", isLink: false },
     ],
   },
 ];
@@ -91,7 +83,7 @@ const FullscreenMenu = () => {
               }}
             >
               <div className="space-y-8 sm:space-y-10 md:space-y-12">
-                {menuCategories.map((category, categoryIndex) => (
+                {menuCategories.map((category) => (
                   <motion.div
                     key={category.title}
                     variants={{

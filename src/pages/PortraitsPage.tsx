@@ -79,10 +79,9 @@ const PortraitsPage = () => {
       <footer className="border-t border-gray-800 py-12 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <p className="text-xs tracking-widest text-gray-400 mb-4">
-              © 2025 WHITECOATLAB
+            <p className="text-xs tracking-widest text-gray-400">
+              MARKETING STUDIO · NEW YORK · © 2026
             </p>
-            <p className="text-xs text-gray-500">NEW YORK</p>
           </div>
         </div>
       </footer>

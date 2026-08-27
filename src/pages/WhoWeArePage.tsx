@@ -154,12 +154,10 @@ const WhoWeArePage = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                We are{" "}
-                <strong className="text-white font-light">Whitecoatlab</strong>{" "}
-                — a creative studio that exists at the intersection of narrative
-                ambition and aesthetic precision. We believe in the alchemy of
-                collaboration, where individual vision dissolves into something
-                larger, more resonant, more true.
+                <strong className="text-white font-light">WhiteCoatLab</strong>{" "}
+                is a marketing studio. Every project starts with one question,
+                what is this business trying to achieve, and everything we make
+                comes from the answer.
               </motion.p>
 
               <motion.p
@@ -177,15 +175,29 @@ const WhoWeArePage = () => {
               </motion.p>
 
               <motion.p
-                className="text-base sm:text-lg md:text-xl leading-relaxed text-gray-400 font-extralight italic"
+                className="text-base sm:text-lg md:text-xl leading-relaxed text-gray-300 mb-8 font-extralight"
                 style={{ lineHeight: 1.7, fontWeight: 200 }}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
-                We are not just visual storytellers. We are architects of
-                emotion for the digital age.
+                We lead, discovery through delivery, and own the client
+                relationship from the first conversation.
+              </motion.p>
+
+              <motion.p
+                className="text-base sm:text-lg md:text-xl leading-relaxed text-gray-400 font-extralight italic"
+                style={{ lineHeight: 1.7, fontWeight: 200 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+              >
+                A marketing partner with roughly ten years in the field brings
+                the fuller stack, campaign strategy, brand positioning, and go
+                to market, into the room when an engagement calls for it. One
+                relationship, the full picture behind it.
               </motion.p>
             </div>
           </motion.div>
@@ -324,8 +336,11 @@ const WhoWeArePage = () => {
             </span>
             <div className="w-16 h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent" />
           </div>
-          <p className="text-sm text-gray-600 tracking-wider">
+          <p className="text-sm text-gray-600 tracking-wider mb-8">
             OPEN TO THE WORLD
+          </p>
+          <p className="text-xs text-gray-600 tracking-widest">
+            MARKETING STUDIO · NEW YORK · © 2026
           </p>
         </motion.div>
       </section>
